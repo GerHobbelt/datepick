@@ -1271,9 +1271,6 @@ $.extend(Datepicker.prototype, {
 			showSpeed = (showSpeed == 'normal' && $.ui && $.ui.version >= '1.8' ?
 				'_default' : showSpeed);
 			var postProcess = function() {
-				if (!inst.div) {
-					return;
-				}
 				inst.div.remove();
 				inst.div = null;
 				plugin.curInst = null;
@@ -1288,10 +1285,7 @@ $.extend(Datepicker.prototype, {
 			else {
 				var hideAnim = (showAnim == 'slideDown' ? 'slideUp' :
 					(showAnim == 'fadeIn' ? 'fadeOut' : 'hide'));
-				inst.div[hideAnim]((showAnim ? showSpeed : ''), postProcess);
-			}
-			if (!showAnim) {
-				postProcess();
+				inst.div[hideAnim]((showAnim ? showSpeed : 0), postProcess);
 			}
 		}
 	},
