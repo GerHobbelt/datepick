@@ -1521,8 +1521,8 @@ $.extend(Datepicker.prototype, {
 			inst.drawDate = this._checkMinMax(plugin.newDate(inst.selectedDates[0] ||
 				inst.get('defaultDate') || plugin.today()), inst);
 			if (!setOpt) {
-				this._update(target);
 				this._updateInput(target, keyUp);
+				this._update(target);
 			}
 		}
 	},
