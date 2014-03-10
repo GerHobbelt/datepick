@@ -9,7 +9,10 @@
 <script type="text/javascript">
 $(function() {
 	$('#popupDatepicker').datepick();
-	$('#inlineDatepicker').datepick({onSelect: showDate});
+	$('#inlineDatepicker').datepick({
+		onSelect: showDate,
+		selectableDates: ['12-03-2014', '2014-03-16', '2014-03-20', '2014-03-05']
+	});
 });
 
 function showDate(date) {

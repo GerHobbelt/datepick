@@ -41,6 +41,7 @@ function Datepicker() {
 		selectDefaultDate: false, // True to pre-select the default date if no other is chosen
 		minDate: null, // The minimum selectable date
 		maxDate: null, // The maximum selectable date
+		selectableDates: [], // array with timestams of selectable dates
 		dateFormat: 'mm/dd/yyyy', // Format for dates
 		autoSize: false, // True to size the input field according to the date format
 		rangeSelect: false, // Allows for selecting a date range on one date picker
@@ -1849,6 +1850,24 @@ $.extend(Datepicker.prototype, {
 					inst.options.onDate.apply(target, [drawDate, drawDate.getMonth() + 1 == month]));
 				var selectable = (selectOtherMonths || drawDate.getMonth() + 1 == month) &&
 					this._isSelectable(target, drawDate, dateInfo.selectable, minDate, maxDate);
+
+				var selDates = inst.options.selectableDates;
+
+				if(selectable) {
+					for(var i = 0; i < selDates.length; i++) {
+						var selDate = new Date(selDates[i]);
+						selectable = false;
+
+						if (drawDate.getYear() === selDate.getYear() &&
+							drawDate.getMonth() === selDate.getMonth() &&
+							drawDate.getDate() === selDate.getDate()) {
+
+							selectable = true;
+							break;
+						}
+					}
+				}
+
 				days += this._prepare(renderer.day, inst).replace(/\{day\}/g,
 					(selectable ? '<a href="javascript:void(0)"' : '<span') +
 					' class="dp' + ts + ' ' + (dateInfo.dateClass || '') +
