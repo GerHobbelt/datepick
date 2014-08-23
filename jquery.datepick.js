@@ -2071,7 +2071,7 @@
 						(dateInfo.title || plugin.formatDate(
 						inst.options.dayStatus, drawDate, inst.getConfig())) + '"' : '') + '>' +
 						(inst.options.showOtherMonths || (drawDate.getMonth() + 1) === month ?
-						dateInfo.content || drawDate.getDate() : '&nbsp;') +
+						dateInfo.content || drawDate.getDate() : '&#160;') +
 						(selectable ? '</a>' : '</span>'));
 					plugin.add(drawDate, 1, 'd');
 					ts = drawDate.getTime();
