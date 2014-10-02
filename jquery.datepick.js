@@ -2055,6 +2055,23 @@
 						inst.options.onDate.apply(elem, [drawDate, drawDate.getMonth() + 1 === month]));
 					var selectable = (selectOtherMonths || drawDate.getMonth() + 1 === month) &&
 						this._isSelectable(elem, drawDate, dateInfo.selectable, minDate, maxDate);
+
+    				var selDates = inst.options.selectableDates;
+
+    				if (selectable) {
+    					for (var i = 0; i < selDates.length; i++) {
+    						var selDate = new Date(selDates[i]);
+    						selectable = false;
+
+    						if (drawDate.getYear() === selDate.getYear() &&
+    							drawDate.getMonth() === selDate.getMonth() &&
+    							drawDate.getDate() === selDate.getDate()) {
+    							selectable = true;
+    							break;
+    						}
+    					}
+    				}
+
 					days += this._prepare(renderer.day, inst).replace(/\{day\}/g,
 						(selectable ? '<a href="javascript:void(0)"' : '<span') +
 						' class="dp' + ts + ' ' + (dateInfo.dateClass || '') +
