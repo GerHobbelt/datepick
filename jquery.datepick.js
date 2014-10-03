@@ -350,6 +350,7 @@
 			@property [selectDefaultDate=false] {boolean} <code>true</code> to pre-select the default date if no other is chosen.
 			@property [minDate=null] {string|number|Date} The minimum selectable date.
 			@property [maxDate=null] {string|number|Date} The maximum selectable date.
+            @property [selectableDates=[]] {array} Array with timestamps of selectable dates
 			@property [dateFormat='mm/dd/yyyy'] {string} Format for dates.
 			@property [autoSize=false] {boolean} <code>true</code> to size the input field according to the date format.
 			@property [rangeSelect=false] {boolean} Allows for selecting a date range on one date picker.
@@ -393,6 +394,7 @@
 			selectDefaultDate: false,
 			minDate: null,
 			maxDate: null,
+    		selectableDates: [], // array with timestamps of selectable dates
 			dateFormat: 'mm/dd/yyyy',
 			autoSize: false,
 			rangeSelect: false,
